@@ -8,433 +8,56 @@
       name="description"
       content="A fresh perspective on high-profile cases, legal controversies, and the questions that often go unanswered."
     />
-    <meta name="theme-color" content="#120c08" />
+    <meta name="theme-color" content="#0a0a0a" />
     <link rel="canonical" href="https://www.theunseatedjuror.com/" />
     <meta property="og:title" content="The Unseated Juror" />
     <meta property="og:description" content="Real cases. Sharper questions. A deeper look. Coming soon." />
     <meta property="og:image" content="https://www.theunseatedjuror.com/hero.jpg" />
     <meta property="og:type" content="website" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
-      rel="stylesheet"
-    />
     <style>
-      :root {
-        --gold-light: #f0dfa8;
-        --gold: #d4af37;
-        --gold-deep: #9a7b2e;
-        --wood: #2a1810;
-        --wood-light: #4a3020;
-        --bg-deep: #0a0705;
-        --text: #e8dfd0;
-        --ring: min(42vw, 42vh, 320px);
-      }
-
       *,
       *::before,
       *::after {
         box-sizing: border-box;
       }
-
-      html {
-        height: 100%;
-        -webkit-text-size-adjust: 100%;
-      }
-
+      html,
       body {
         margin: 0;
-        min-height: 100%;
-        min-height: 100dvh;
-        overflow-x: hidden;
-        overflow-y: auto;
-        font-family: "Cormorant Garamond", Georgia, serif;
-        color: var(--text);
-        background: var(--bg-deep);
+        height: 100%;
+        background: #0a0a0a;
       }
-
-      .gold-text {
-        background: linear-gradient(165deg, #fff6d6 0%, var(--gold-light) 18%, var(--gold) 45%, var(--gold-deep) 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.35));
+      body {
+        overflow: hidden;
       }
-
-      .scene {
-        position: relative;
-        min-height: 100dvh;
-        display: flex;
-        flex-direction: column;
-        padding: clamp(1rem, 3vw, 2rem);
-        padding-bottom: clamp(4.5rem, 14vh, 7rem);
-        padding-top: max(clamp(1rem, 3vw, 2rem), env(safe-area-inset-top));
-        padding-left: max(clamp(1rem, 3vw, 2rem), env(safe-area-inset-left));
-        padding-right: max(clamp(1rem, 3vw, 2rem), env(safe-area-inset-right));
-      }
-
-      .scene__bg {
+      .stage {
         position: fixed;
         inset: 0;
-        z-index: -2;
-        background:
-          radial-gradient(ellipse 90% 70% at 72% 35%, rgba(180, 130, 60, 0.22), transparent 55%),
-          radial-gradient(ellipse 60% 50% at 18% 45%, rgba(212, 175, 55, 0.12), transparent 50%),
-          linear-gradient(180deg, #1a1410 0%, var(--bg-deep) 38%, #050403 100%);
-      }
-
-      .scene__bg::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          105deg,
-          transparent 0%,
-          rgba(0, 0, 0, 0.25) 42%,
-          transparent 44%,
-          transparent 100%
-        );
-        opacity: 0.6;
-      }
-
-      .scene__court {
-        position: fixed;
-        inset: 0;
-        z-index: -1;
-        opacity: 0.35;
-        background:
-          linear-gradient(180deg, transparent 55%, rgba(30, 18, 10, 0.9) 100%),
-          repeating-linear-gradient(
-            90deg,
-            transparent,
-            transparent 48px,
-            rgba(60, 40, 25, 0.08) 48px,
-            rgba(60, 40, 25, 0.08) 50px
-          );
-      }
-
-      .desk {
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: clamp(3.5rem, 12vh, 6.5rem);
-        z-index: 1;
-        background: linear-gradient(180deg, var(--wood-light) 0%, var(--wood) 40%, #1a0f09 100%);
-        box-shadow:
-          0 -4px 24px rgba(212, 175, 55, 0.15),
-          inset 0 2px 0 rgba(255, 220, 160, 0.12);
-      }
-
-      .desk::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
-      }
-
-      .gavel {
-        position: fixed;
-        z-index: 2;
-        right: clamp(1rem, 5vw, 4rem);
-        bottom: clamp(2rem, 8vh, 4rem);
-        width: clamp(3.5rem, 10vw, 6rem);
-        height: auto;
-        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
-        opacity: 0.95;
-      }
-
-      .layout {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: clamp(1.25rem, 4vw, 2.5rem);
-        width: min(1120px, 100%);
-        margin: 0 auto;
-        z-index: 3;
-      }
-
-      @media (min-width: 768px) and (min-aspect-ratio: 4/5) {
-        .layout {
-          flex-direction: row;
-          align-items: center;
-          justify-content: center;
-          gap: clamp(1.5rem, 4vw, 3rem);
-        }
-      }
-
-      .emblem {
-        flex: 0 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .emblem__ring {
-        position: relative;
-        width: var(--ring);
-        height: var(--ring);
-        border-radius: 50%;
-        padding: clamp(6px, 1.2vw, 10px);
-        background: linear-gradient(145deg, #f5e6a8, #b8922a 35%, #7a5c18 70%, #e8c96a);
-        box-shadow:
-          0 0 40px rgba(212, 175, 55, 0.45),
-          0 0 80px rgba(212, 175, 55, 0.2),
-          inset 0 2px 4px rgba(255, 255, 255, 0.35);
-      }
-
-      .emblem__ring::before {
-        content: "";
-        position: absolute;
-        inset: -8px;
-        border-radius: 50%;
-        border: 1px solid rgba(212, 175, 55, 0.25);
-        pointer-events: none;
-      }
-
-      .emblem__inner {
-        position: relative;
         width: 100%;
         height: 100%;
-        border-radius: 50%;
-        overflow: hidden;
-        background: radial-gradient(circle at 50% 30%, #3a2818 0%, #120a06 70%);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        padding-top: 8%;
+        width: 100dvw;
+        height: 100dvh;
+        background: #0a0a0a;
       }
-
-      .logo {
-        position: relative;
-        z-index: 2;
-        text-align: center;
-        font-family: Cinzel, "Times New Roman", serif;
-        line-height: 1.05;
-        padding: 0 10%;
-      }
-
-      .logo__the {
-        font-size: clamp(0.55rem, 2.2vw, 0.75rem);
-        letter-spacing: 0.35em;
-        font-weight: 600;
-      }
-
-      .logo__title {
-        font-size: clamp(0.7rem, 3.2vw, 1.05rem);
-        letter-spacing: 0.08em;
-        font-weight: 700;
-        margin: 0.15em 0;
-        text-transform: uppercase;
-      }
-
-      .logo__juror {
-        font-size: clamp(0.85rem, 4vw, 1.35rem);
-        letter-spacing: 0.12em;
-        font-weight: 700;
-        text-transform: uppercase;
-        display: flex;
-        align-items: center;
-        gap: 0.35em;
-        justify-content: center;
-      }
-
-      .logo__juror::before,
-      .logo__juror::after {
-        content: "";
-        flex: 1;
-        max-width: 1.5em;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      }
-
-      .chair {
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 78%;
-        height: auto;
-        z-index: 1;
-      }
-
-      .rule {
-        display: none;
-        width: 1px;
-        align-self: stretch;
-        min-height: 12rem;
-        background: linear-gradient(
-          180deg,
-          transparent,
-          rgba(212, 175, 55, 0.7) 15%,
-          rgba(212, 175, 55, 0.9) 50%,
-          rgba(212, 175, 55, 0.7) 85%,
-          transparent
-        );
-        box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
-      }
-
-      @media (min-width: 768px) and (min-aspect-ratio: 4/5) {
-        .rule {
-          display: block;
-        }
-      }
-
-      .copy {
-        flex: 1;
-        text-align: center;
-        max-width: 28rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: clamp(0.75rem, 2.5vw, 1.25rem);
-      }
-
-      .headline {
-        margin: 0;
-        font-family: Cinzel, serif;
-        font-size: clamp(1rem, 3.8vw, 1.65rem);
-        font-weight: 600;
-        letter-spacing: 0.06em;
-        line-height: 1.35;
-        text-transform: uppercase;
-      }
-
-      .sparkline {
-        width: min(14rem, 70%);
-        height: 2px;
-        background: linear-gradient(90deg, transparent, var(--gold), #fff8e0, var(--gold), transparent);
-        box-shadow: 0 0 16px rgba(212, 175, 55, 0.8);
-        border: none;
-        margin: 0;
-      }
-
-      .lede {
-        margin: 0;
-        font-size: clamp(1.05rem, 2.8vw, 1.35rem);
-        line-height: 1.5;
-        font-weight: 400;
-        color: #ddd4c4;
-        max-width: 22rem;
-      }
-
-      .cta {
-        margin-top: clamp(0.5rem, 2vw, 1rem);
-        font-family: Cinzel, serif;
-        font-size: clamp(0.75rem, 2.4vw, 0.95rem);
-        font-weight: 600;
-        letter-spacing: 0.28em;
-        text-transform: uppercase;
-        padding: 0.85em 1.8em;
-        border: 1px solid var(--gold);
-        border-radius: 999px;
-        background: rgba(20, 14, 8, 0.65);
-        box-shadow:
-          0 0 24px rgba(212, 175, 55, 0.25),
-          inset 0 0 20px rgba(212, 175, 55, 0.08);
-        position: relative;
-      }
-
-      .cta::before,
-      .cta::after {
-        content: "";
-        position: absolute;
-        left: 10%;
-        right: 10%;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(255, 240, 200, 0.9), transparent);
-        opacity: 0.7;
-      }
-
-      .cta::before {
-        top: -6px;
-      }
-
-      .cta::after {
-        bottom: -6px;
+      .stage img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+        image-rendering: auto;
       }
     </style>
   </head>
   <body>
-    <div class="scene" role="img" aria-label="The Unseated Juror — coming soon">
-      <div class="scene__bg" aria-hidden="true"></div>
-      <div class="scene__court" aria-hidden="true"></div>
-
-      <div class="layout">
-        <section class="emblem" aria-label="The Unseated Juror logo">
-          <div class="emblem__ring">
-            <div class="emblem__inner">
-              <div class="logo">
-                <div class="logo__the gold-text">THE</div>
-                <div class="logo__title gold-text">UNSEATED</div>
-                <div class="logo__juror gold-text"><span>JUROR</span></div>
-              </div>
-              <svg class="chair" viewBox="0 0 200 160" aria-hidden="true">
-                <defs>
-                  <linearGradient id="leather" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#2a2420" />
-                    <stop offset="100%" stop-color="#0a0806" />
-                  </linearGradient>
-                </defs>
-                <rect x="48" y="118" width="104" height="12" rx="3" fill="#1a120c" />
-                <rect x="52" y="100" width="96" height="22" rx="4" fill="url(#leather)" />
-                <path
-                  d="M62 100 V45 Q62 28 100 28 Q138 28 138 45 V100"
-                  fill="url(#leather)"
-                  stroke="#3d3228"
-                  stroke-width="2"
-                />
-                <rect x="42" y="70" width="18" height="52" rx="4" fill="#3d2818" />
-                <rect x="140" y="70" width="18" height="52" rx="4" fill="#3d2818" />
-                <rect x="88" y="42" width="24" height="14" rx="2" fill="#c9a227" stroke="#f0dfa8" stroke-width="0.8" />
-                <text
-                  x="100"
-                  y="52"
-                  text-anchor="middle"
-                  font-family="Cinzel, serif"
-                  font-size="10"
-                  font-weight="700"
-                  fill="#1a1008"
-                >
-                  13
-                </text>
-              </svg>
-            </div>
-          </div>
-        </section>
-
-        <div class="rule" aria-hidden="true"></div>
-
-        <section class="copy">
-          <h1 class="headline gold-text">
-            Real cases.<br />
-            Sharper questions.<br />
-            A deeper look.
-          </h1>
-          <hr class="sparkline" />
-          <p class="lede">
-            A fresh perspective on high-profile cases, legal controversies, and the questions that often go unanswered.
-          </p>
-          <p class="cta gold-text" role="status">Coming soon</p>
-        </section>
-      </div>
-
-      <div class="desk" aria-hidden="true"></div>
-      <svg class="gavel" viewBox="0 0 80 120" aria-hidden="true">
-        <rect x="8" y="88" width="48" height="14" rx="4" fill="#5c3d28" />
-        <rect x="4" y="98" width="56" height="10" rx="3" fill="#3d2818" />
-        <rect x="54" y="20" width="12" height="72" rx="3" fill="#6b4a32" />
-        <ellipse cx="60" cy="22" rx="22" ry="14" fill="#8b5c38" />
-        <rect x="38" y="14" width="36" height="16" rx="4" fill="#a07040" />
-        <rect x="36" y="20" width="6" height="48" fill="#c9a227" opacity="0.9" />
-      </svg>
-    </div>
+    <main class="stage">
+      <img
+        src="hero.jpg"
+        width="1024"
+        height="682"
+        alt="The Unseated Juror — Real cases. Sharper questions. A deeper look. Coming soon."
+        decoding="async"
+        fetchpriority="high"
+      />
+    </main>
   </body>
 </html>
