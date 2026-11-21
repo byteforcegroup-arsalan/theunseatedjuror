@@ -6,9 +6,10 @@ Static coming-soon page for [theunseatedjuror.com](https://theunseatedjuror.com)
 
 1. Import this repo in Vercel (same account as Classwise).
 2. Framework preset: **Other** (no build command).
-3. Output: static files from repo root (`index.html`, `public/`).
-4. **Domains → Add** `theunseatedjuror.com` and `www.theunseatedjuror.com` (primary).
-5. **Domains → Add** `unseatedjuror.com` and `www.unseatedjuror.com` — Vercel will still attach them; `vercel.json` redirects those hosts to `https://theunseatedjuror.com`.
+3. **Output Directory:** `public` (or leave blank — `vercel.json` sets this). The page is `public/index.html`.
+4. **Do not** set a build command.
+5. **Domains → Add** `theunseatedjuror.com` and `www.theunseatedjuror.com` (primary).
+6. **Domains → Add** `unseatedjuror.com` and `www.unseatedjuror.com` — Vercel will still attach them; `vercel.json` redirects those hosts to `https://theunseatedjuror.com`.
 
 ## GoDaddy (leave DNS only; remove Website Builder / hosting)
 
