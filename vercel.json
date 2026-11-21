@@ -7,19 +7,19 @@
     {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "unseatedjuror.com" }],
-      "destination": "https://theunseatedjuror.com/:path*",
+      "destination": "https://www.theunseatedjuror.com/:path*",
       "permanent": true
     },
     {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "www.unseatedjuror.com" }],
-      "destination": "https://theunseatedjuror.com/:path*",
+      "destination": "https://www.theunseatedjuror.com/:path*",
       "permanent": true
     },
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.theunseatedjuror.com" }],
-      "destination": "https://theunseatedjuror.com/:path*",
+      "has": [{ "type": "host", "value": "theunseatedjuror.com" }],
+      "destination": "https://www.theunseatedjuror.com/:path*",
       "permanent": true
     }
   ]
