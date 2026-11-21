@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>The Unseated Juror — Coming Soon</title>
     <meta
       name="description"
@@ -15,46 +15,68 @@
     <meta property="og:image" content="https://theunseatedjuror.com/hero.jpg" />
     <meta property="og:type" content="website" />
     <style>
-      * {
+      *,
+      *::before,
+      *::after {
         box-sizing: border-box;
       }
-      html,
+      html {
+        height: 100%;
+        -webkit-text-size-adjust: 100%;
+      }
       body {
         margin: 0;
         height: 100%;
+        overflow: hidden;
         background: #0a0a0a;
       }
-      main {
-        min-height: 100dvh;
+      /* Full viewport frame; safe-area for notched phones */
+      .frame {
+        position: fixed;
+        inset: 0;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 0;
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+          env(safe-area-inset-left);
+        background: #0a0a0a;
       }
-      img {
+      /*
+        Scales to the largest size that fits the screen.
+        Caps at intrinsic pixels (1024×682) so the file is never upscaled (no softening).
+      */
+      .hero {
         display: block;
-        width: 100%;
-        max-width: 1280px;
+        width: auto;
         height: auto;
-        margin: 0 auto;
+        max-width: min(100%, 1024px);
+        max-height: min(100%, 682px);
+        object-fit: contain;
+        object-position: center;
+        image-rendering: auto;
       }
-      @media (min-aspect-ratio: 3/2) {
-        img {
-          max-height: 100dvh;
-          width: auto;
-          max-width: 100%;
-          object-fit: contain;
+      @supports (height: 100dvh) {
+        .frame {
+          height: 100dvh;
+          width: 100dvw;
+        }
+        .hero {
+          max-width: min(100%, 1024px, calc(100dvh * 1024 / 682));
+          max-height: min(100%, 682px, calc(100dvw * 682 / 1024));
         }
       }
     </style>
   </head>
   <body>
-    <main>
+    <main class="frame">
       <img
+        class="hero"
         src="/hero.jpg"
         width="1024"
         height="682"
         alt="The Unseated Juror — Real cases. Sharper questions. A deeper look. Coming soon."
+        decoding="async"
+        fetchpriority="high"
       />
     </main>
   </body>
